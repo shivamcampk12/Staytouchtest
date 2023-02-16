@@ -17,7 +17,7 @@ ApplicationExpressObj.use(express.urlencoded({ extended: true }));
 
 // simple route
 ApplicationExpressObj.get("/", (req, res) => {
-  res.json({ message: "Welcome to Rummybackend Application." });
+  res.json({ message: "Welcome to Staytouch Application." });
 });
 
 // routes
