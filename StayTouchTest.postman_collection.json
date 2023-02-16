@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "85cca74f-8cd3-4f42-a14b-3e105d821c81",
+		"name": "StayTouchTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12339966"
+	},
+	"item": [
+		{
+			"name": "Hasura ListUsers",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-hasura-admin-secret",
+						"value": "B4Kw3MPL6kh986TAmNcjHGH4GfJxWr87M4GDqnLyLU2D3VBlAAi7gA4C5rJzCUun",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "query users (limit: 1){\n  user {\n    id\n    first_name\n    last_name\n    gender\n  }\n}"
+				},
+				"url": {
+					"raw": "https://excited-cod-54.hasura.app/api/rest/ListUsers",
+					"protocol": "https",
+					"host": [
+						"excited-cod-54",
+						"hasura",
+						"app"
+					],
+					"path": [
+						"api",
+						"rest",
+						"ListUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hasura findUsersByLocation",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-hasura-admin-secret",
+						"value": "B4Kw3MPL6kh986TAmNcjHGH4GfJxWr87M4GDqnLyLU2D3VBlAAi7gA4C5rJzCUun",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query users($id:Int!) { user:user_by_pk(id:$id) { id first_name last_name gender location:user_trackings{lat,lng}}}",
+						"variables": "{\"id\":1}"
+					}
+				},
+				"url": {
+					"raw": "https://excited-cod-54.hasura.app/v1/graphql",
+					"protocol": "https",
+					"host": [
+						"excited-cod-54",
+						"hasura",
+						"app"
+					],
+					"path": [
+						"v1",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS GQL Signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_username\":\"admin\",\n    \"_password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS GetAllUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2NDU1MDc3LCJleHAiOjE2NzY1NDE0Nzd9.YhVYHM1IaB1IYqdlzxa7KQm7GBzdHpE0Xn3U0vESVnE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"_query\":\"query users { user { id first_name last_name gender }}\",\n   \"_variables\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/graphQLBackend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"graphQLBackend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS GetPagedUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2NDU1MDc3LCJleHAiOjE2NzY1NDE0Nzd9.YhVYHM1IaB1IYqdlzxa7KQm7GBzdHpE0Xn3U0vESVnE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"_query\":\"query users { user (limit:2) { id first_name last_name gender }}\",\n   \"_variables\":\"\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/graphQLBackend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"graphQLBackend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS GetNearbyUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2NDQ4MzMwLCJleHAiOjE2NzY1MzQ3MzB9.9B_7UijSM5rqD_7K7zTtRBINRja1zE5hoepFXn5JW7M",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"_query\":\"query users { user {id first_name last_name gender } location: findusers(args: {radius: 1, lati: \\\"30.1234\\\", long: \\\"78.1234\\\"}) { lat lng user_id}}\",\n   \"_variables\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/graphQLBackend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"graphQLBackend"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
