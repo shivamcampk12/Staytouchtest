@@ -1,3 +1,4 @@
+const { GraphQLClient, gql } = require("graphql-request");
 const config = require("../config/auth.config");
 const hasuraAPIURL = config.HASURAGraphQLAPIURL;
 
@@ -11,7 +12,6 @@ exports.graphQL = (req, res) => {
         message: "GraphQL Query does not exist",
       });
     }
-  
     if (!hasuraAPIURL || hasuraAPIURL === "") {
       return res.status(401).send({
         message: "hasuraAPIURL does not exist",
@@ -40,3 +40,43 @@ async function postDataToHasura(url = '', graphQuery = {},graphVariables) {
     });
     return response.json();
   }
+
+
+
+  exports.graphQLRAW = (req, res) => {
+
+    let graphQuery = req.body._query;
+    let graphVariables = req.body._variables;
+
+    if (!graphQuery || graphQuery === "") {
+      return res.status(401).send({
+        message: "GraphQL Query does not exist",
+      });
+    }
+  
+    if (!hasuraAPIURL || hasuraAPIURL === "") {
+      return res.status(401).send({
+        message: "hasuraAPIURL does not exist",
+      });
+    }
+
+    postRAWQueryToHasura(graphQuery).then((data) => {
+      res.header('Content-type', 'application/json').status(200).send(JSON.stringify(data));
+    });
+  };
+
+
+
+  async function postRAWQueryToHasura(graphQuery = {},graphVariables) {
+    
+    //Creating GQL Query
+    const query = gql`${graphQuery}`;
+  
+    const client = new GraphQLClient(hasuraAPIURL)
+    client.setHeaders({
+      'Content-Type': 'application/json',
+      'x-hasura-admin-secret': config.HASURAToken,
+    });  
+
+      return await client.request(query);
+    }
