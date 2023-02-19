@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    container_name: StayTouchTest
+    container_name: staytouchtest
     restart: always
     build: .
     ports:
