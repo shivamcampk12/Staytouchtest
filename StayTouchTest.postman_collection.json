@@ -106,12 +106,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/",
+					"raw": "http://localhost:3030/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "3030",
 					"path": [
 						""
 					]
@@ -134,12 +134,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/auth/signin",
+					"raw": "http://localhost:3030/api/auth/signin",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "3030",
 					"path": [
 						"api",
 						"auth",
@@ -156,7 +156,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2NDU1MDc3LCJleHAiOjE2NzY1NDE0Nzd9.YhVYHM1IaB1IYqdlzxa7KQm7GBzdHpE0Xn3U0vESVnE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2Nzk4MDk4LCJleHAiOjE2NzY4ODQ0OTh9.ZyJEZ6MUHtoYj7Uz5BL46wGyWvtRDdaa3IlfrEIUqeU",
 						"type": "text"
 					}
 				],
@@ -170,12 +170,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/graphQLBackend",
+					"raw": "http://localhost:3030/api/graphQLBackend",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "3030",
 					"path": [
 						"api",
 						"graphQLBackend"
@@ -191,7 +191,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2NDU1MDc3LCJleHAiOjE2NzY1NDE0Nzd9.YhVYHM1IaB1IYqdlzxa7KQm7GBzdHpE0Xn3U0vESVnE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2Nzk4MDk4LCJleHAiOjE2NzY4ODQ0OTh9.ZyJEZ6MUHtoYj7Uz5BL46wGyWvtRDdaa3IlfrEIUqeU",
 						"type": "text"
 					}
 				],
@@ -205,12 +205,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/graphQLBackend",
+					"raw": "http://localhost:3030/api/graphQLBackend",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "3030",
 					"path": [
 						"api",
 						"graphQLBackend"
@@ -226,7 +226,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2NDQ4MzMwLCJleHAiOjE2NzY1MzQ3MzB9.9B_7UijSM5rqD_7K7zTtRBINRja1zE5hoepFXn5JW7M",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2Nzk4MDk4LCJleHAiOjE2NzY4ODQ0OTh9.ZyJEZ6MUHtoYj7Uz5BL46wGyWvtRDdaa3IlfrEIUqeU",
 						"type": "text"
 					}
 				],
@@ -240,15 +240,120 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/graphQLBackend",
+					"raw": "http://localhost:3030/api/graphQLBackend",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "3030",
 					"path": [
 						"api",
 						"graphQLBackend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS GraphQLRAW GetAllUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2Nzk4MDk4LCJleHAiOjE2NzY4ODQ0OTh9.ZyJEZ6MUHtoYj7Uz5BL46wGyWvtRDdaa3IlfrEIUqeU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"_query\":\"query users { user { id first_name last_name gender }}\",\n   \"_variables\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/graphQLRAW",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"graphQLRAW"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS GraphQLRAW GetPagedUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2Nzk4MDk4LCJleHAiOjE2NzY4ODQ0OTh9.ZyJEZ6MUHtoYj7Uz5BL46wGyWvtRDdaa3IlfrEIUqeU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"_query\":\"query users { user (limit:2) { id first_name last_name gender }}\",\n   \"_variables\":\"\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/graphQLRAW",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"graphQLRAW"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NodeJS graphQLRAW GetNearbyUsers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNjc2Nzk4MDk4LCJleHAiOjE2NzY4ODQ0OTh9.ZyJEZ6MUHtoYj7Uz5BL46wGyWvtRDdaa3IlfrEIUqeU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"_query\":\"query users { user {id first_name last_name gender } location: findusers(args: {radius: 1, lati: \\\"30.1234\\\", long: \\\"78.1234\\\"}) { lat lng user_id}}\",\n   \"_variables\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/graphQLRAW",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"graphQLRAW"
 					]
 				}
 			},
